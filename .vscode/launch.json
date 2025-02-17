@@ -1,0 +1,54 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug api-gateway",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/api-gateway/src/server.js",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "3000",
+        "IDENTITY_SERVICE_URL": "http://localhost:3001",
+        "POST_SERVICE_URL": "http://localhost:3002",
+        "REDIS_URL": "redis://localhost:6379"
+      },
+      "outFiles": [
+        "${workspaceFolder}/api-gateway/**/*.js"
+      ]
+    },
+    {
+      "name": "Debug identity-service",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/identity-service/src/server.js",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "3001"
+      },
+      "outFiles": [
+        "${workspaceFolder}/identity-service/**/*.js"
+      ]
+    },
+    {
+      "name": "Debug post-service",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/post-service/src/server.js",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": "3002"
+      },
+      "outFiles": [
+        "${workspaceFolder}/post-service/**/*.js"
+      ]
+    },
+    {
+      "name": "Debug all services",
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "start-all-services",
+      "configurations": ["Debug api-gateway", "Debug identity-service", "Debug post-service"]
+    }
+  ]
+}
